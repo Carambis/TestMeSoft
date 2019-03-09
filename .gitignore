@@ -1,7 +1,3 @@
-
-# Created by https://www.gitignore.io/api/java,gradle,jetbrains+iml
-# Edit at https://www.gitignore.io/?templates=java,gradle,jetbrains+iml
-
 ### Java ###
 # Compiled class file
 *.class
@@ -61,6 +57,7 @@ hs_err_pid*
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
+# .idea/compiler.xml
 
 # CMake
 cmake-build-*/
@@ -121,5 +118,3 @@ gradle-app.setting
 
 ### Gradle Patch ###
 **/build/
-
-# End of https://www.gitignore.io/api/java,gradle,jetbrains+iml
