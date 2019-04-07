@@ -3,10 +3,7 @@ package by.bsuir.controller;
 import by.bsuir.entity.Task;
 import by.bsuir.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Controller {
@@ -26,5 +23,10 @@ public class Controller {
     @PostMapping(value = "/getTask")
     public Task getTask(@RequestParam("id") Long id){
         return taskService.getTask(id);
+    }
+
+    @GetMapping(value = "/getNextTask")
+    public String getNextTask(){
+        return "someTask";
     }
 }

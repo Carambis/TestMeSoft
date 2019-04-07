@@ -10,7 +10,7 @@ public class Task {
     private Long id;
     private String taskName;
     private Byte[] htmlFile;
-    private Question[] question;
+    private String[] question;
 
     public Long getId() {
         return id;
@@ -36,11 +36,11 @@ public class Task {
         this.htmlFile = htmlFile;
     }
 
-    public Question[] getQuestion() {
+    public String[] getQuestion() {
         return question;
     }
 
-    public void setQuestion(Question[] question) {
+    public void setQuestion(String[] question) {
         this.question = question;
     }
 }
