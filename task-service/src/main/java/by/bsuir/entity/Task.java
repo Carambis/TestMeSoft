@@ -9,6 +9,7 @@ public class Task {
     @Id
     private Long id;
     private String taskName;
+    private String testType;
     private Byte[] htmlFile;
     private String[] question;
 
@@ -26,6 +27,14 @@ public class Task {
 
     public void setTaskName(String taskName) {
         this.taskName = taskName;
+    }
+
+    public String getTestType() {
+        return testType;
+    }
+
+    public void setTestType(String testType) {
+        this.testType = testType;
     }
 
     public Byte[] getHtmlFile() {

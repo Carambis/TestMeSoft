@@ -19,4 +19,9 @@ public class TaskServiceImpl implements TaskService {
     public Task getTask(Long id) {
         return taskDao.findOne(id);
     }
+
+    @Override
+    public void startTest() {
+
+    }
 }

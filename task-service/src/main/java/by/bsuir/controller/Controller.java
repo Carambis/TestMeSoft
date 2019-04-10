@@ -29,4 +29,9 @@ public class Controller {
     public String getNextTask(){
         return "someTask";
     }
+
+    @GetMapping(value = "/startTest")
+    public void startTest(){
+
+    }
 }

@@ -2,6 +2,12 @@ plugins {
     id 'java'
 }
 
+apply plugin: gradle.plugin.SpringBootPlugin
+
+springBoot {
+    mainClass 'gateway.App'
+}
+
 group 'by.bsuir'
 version '1.0-SNAPSHOT'
 

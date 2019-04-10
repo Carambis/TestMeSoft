@@ -1,0 +1,5 @@
+rootProject.name = 'TestMeSoft'
+include 'user-service'
+include 'gateway-service'
+include 'task-service'
+include 'service-client'

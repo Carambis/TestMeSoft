@@ -1,0 +1,29 @@
+buildscript {
+    ext {
+        springBootVersion = '1.4.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+subprojects {
+    tasks.withType(JavaCompile) {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+task runAll {
+}
+
+runAll.dependsOn ':gateway-service:bootRun'
+runAll.dependsOn ':user-service:bootRun'
+runAll.dependsOn ':task-service:bootRun'
