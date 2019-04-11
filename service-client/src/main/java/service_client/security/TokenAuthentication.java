@@ -16,7 +16,7 @@ public class TokenAuthentication implements Authentication {
     public TokenAuthentication(String token, boolean isAuthenticated,
                                TokenUser principal) {
         this.token = token;
-        this.authorities = Collections.singletonList(new SimpleGrantedAuthority(principal.getGroup()));
+        this.authorities = Collections.singletonList(new SimpleGrantedAuthority("USER"));
         this.isAuthenticated = isAuthenticated;
         this.principal = principal;
     }
@@ -39,7 +39,7 @@ public class TokenAuthentication implements Authentication {
     @Override
     public String getName() {
         if (principal != null)
-            return principal.getLogin();
+            return principal.getFirstName();
         else
             return null;
     }

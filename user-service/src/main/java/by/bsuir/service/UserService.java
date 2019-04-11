@@ -8,11 +8,9 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import service_client.data.User;
-import service_client.data.request.UserCreation;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -30,35 +28,29 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    private final BCryptPasswordEncoder bcryptEncoder;
-
     @Autowired
-    public UserService(UserRepository userRepository, BCryptPasswordEncoder bcryptEncoder) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.bcryptEncoder = bcryptEncoder;
     }
 
-    public User add(final UserCreation userCreation) {
-        UserEntity user = new UserEntity();
-        user.setFirstName(userCreation.firstName);
-        user.setLastName(userCreation.lastName);
-        return userRepository.save(user).toDto();
+    public UserEntity add(final UserEntity userEntity) {
+        return userRepository.save(userEntity);
     }
 
-    public String login(final String login, final String password) {
-//        UserEntity user = userRepository.findById(id);
-//        if (user != null) {
-//            return getToken(user);
-//        }
+    public String login(final String firstName, final String lastName, final String groupNumber) {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setFirstName(firstName);
+        userEntity.setLastName(lastName);
+        userEntity.setGroupNumber(groupNumber);
+        userEntity = add(userEntity);
+        if (userEntity != null) {
+            return getToken(userEntity);
+        }
         throw new RuntimeException("Error");
     }
 
-    public User get(Long id) {
+    public User get(String id) {
         return userRepository.findOne(id).toDto();
-    }
-
-    public UserEntity getByLogin(final Long id) {
-        return userRepository.findById(id);
     }
 
     private String getToken(final UserEntity user) {

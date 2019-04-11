@@ -4,19 +4,19 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import service_client.data.User;
 
-@Document(collection = "task")
+@Document(collection = "users")
 public class UserEntity {
     @Id
-    private Long id;
+    private String id;
     private String firstName;
     private String lastName;
     private String groupNumber;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -21,7 +21,7 @@ public class Controller {
     }
 
     @PostMapping(value = "/getTask")
-    public Task getTask(@RequestParam("id") Long id){
+    public Task getTask(@RequestParam("id") String id){
         return taskService.getTask(id);
     }
 
@@ -32,6 +32,6 @@ public class Controller {
 
     @GetMapping(value = "/startTest")
     public void startTest(){
-
+        taskService.startTest();
     }
 }

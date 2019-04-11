@@ -1,2 +1,5 @@
 rootProject.name = 'task-service'
 
+include ":service-client"
+
+

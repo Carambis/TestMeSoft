@@ -1,7 +1,7 @@
 package service_client.client;
 
 import service_client.data.User;
-import service_client.data.request.UserCreation;
+import service_client.data.User;
 import service_client.result.TaskResult;
 import service_client.data.Task;
 
@@ -20,7 +20,7 @@ public class TaskClient extends Client {
         return post("/update", user, TaskResult.class, token).getData();
     }
 
-    public Task add(final UserCreation user, final String token) {
+    public Task add(final User user, final String token) {
         return post("/add", user, TaskResult.class, token).getData();
     }
 }

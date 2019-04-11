@@ -2,7 +2,6 @@ package service_client.client;
 
 import service_client.result.UserResult;
 import service_client.data.User;
-import service_client.data.request.UserCreation;
 
 
 public class UserClient extends Client {
@@ -20,7 +19,7 @@ public class UserClient extends Client {
         return post("/update", user, UserResult.class, token).getData();
     }
 
-    public User add(final UserCreation user, final String token) {
+    public User add(final User user, final String token) {
         return post("/add", user, UserResult.class, token).getData();
     }
 }

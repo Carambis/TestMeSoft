@@ -2,24 +2,30 @@ package service_client.security;
 
 public final class TokenUser {
     private final Long id;
-    private final String login;
-    private final String group;
+    private final String firstName;
+    private final String lastName;
+    private final String groupNumber;
 
-    public TokenUser(Long id, String login, String group) {
+    public TokenUser(Long id, String firstName, String lastName, String groupNumber) {
         this.id = id;
-        this.login = login;
-        this.group = group;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.groupNumber = groupNumber;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getLogin() {
-        return login;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getGroup() {
-        return group;
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getGroupNumber() {
+        return groupNumber;
     }
 }

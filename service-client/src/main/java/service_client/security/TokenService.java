@@ -4,8 +4,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.impl.DefaultClaims;
 import org.springframework.security.authentication.AuthenticationServiceException;
 
-import java.util.Date;
-
 public class TokenService {
 
     private String key;
@@ -23,20 +21,12 @@ public class TokenService {
             throw new AuthenticationServiceException("Token corrupted");
         }
 
-        if (claims.get(TokenData.EXPIRATION_DATE.getValue(), Long.class) == null) {
-            throw new AuthenticationServiceException("Invalid token");
-        }
-
-        Date expiredDate = new Date(claims.get(TokenData.EXPIRATION_DATE.getValue(), Long.class));
-        if (!expiredDate.after(new Date())) {
-            throw new AuthenticationServiceException("Token expired date error");
-        }
-
         Long id = claims.get(TokenData.ID.getValue(), Number.class).longValue();
-        String login = claims.get(TokenData.LOGIN.getValue(), String.class);
-        String group = claims.get(TokenData.GROUP.getValue(), String.class);
+        String firstName = claims.get(TokenData.FIRSTNAME.getValue(), String.class);
+        String lastName = claims.get(TokenData.LASTNAME.getValue(), String.class);
+        String groupNumber = claims.get(TokenData.GROUPNUMBER.getValue(), String.class);
 
-        TokenUser user = new TokenUser(id, login, group);
+        TokenUser user = new TokenUser(id, firstName, lastName, groupNumber);
 
         return new TokenAuthentication(token, true, user);
     }

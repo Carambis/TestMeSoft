@@ -7,17 +7,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Task {
 
     @Id
-    private Long id;
+    private String id;
     private String taskName;
-    private String testType;
-    private Byte[] htmlFile;
-    private String[] question;
+    private String taskType;
+    private String[] questions;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -29,27 +28,19 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public String getTestType() {
-        return testType;
+    public String getTaskType() {
+        return taskType;
     }
 
-    public void setTestType(String testType) {
-        this.testType = testType;
+    public void setTaskType(String taskType) {
+        this.taskType = taskType;
     }
 
-    public Byte[] getHtmlFile() {
-        return htmlFile;
+    public String[] getQuestions() {
+        return questions;
     }
 
-    public void setHtmlFile(Byte[] htmlFile) {
-        this.htmlFile = htmlFile;
-    }
-
-    public String[] getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String[] question) {
-        this.question = question;
+    public void setQuestions(String[] questions) {
+        this.questions = questions;
     }
 }
