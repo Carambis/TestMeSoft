@@ -44,6 +44,7 @@ public class TokenAuthentication implements Authentication {
             return null;
     }
 
+
     @Override
     public Object getPrincipal() {
         return principal;

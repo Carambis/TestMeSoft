@@ -53,6 +53,10 @@ public class UserService {
         return userRepository.findOne(id).toDto();
     }
 
+    public void deleteUser(String id){
+        userRepository.delete(id);
+    }
+
     private String getToken(final UserEntity user) {
         final Map<String, Object> tokenData = new HashMap<>();
         tokenData.put(TokenData.ID.getValue(), user.getId());

@@ -11,6 +11,7 @@ public class Task {
     private String taskName;
     private String taskType;
     private String[] questions;
+    private String rightQuestion;
 
     public String getId() {
         return id;
@@ -42,5 +43,13 @@ public class Task {
 
     public void setQuestions(String[] questions) {
         this.questions = questions;
+    }
+
+    public String getRightQuestion() {
+        return rightQuestion;
+    }
+
+    public void setRightQuestion(String rightQuestion) {
+        this.rightQuestion = rightQuestion;
     }
 }
