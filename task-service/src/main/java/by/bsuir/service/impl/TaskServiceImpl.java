@@ -32,7 +32,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task getTask(String id) {
-        return crudTaskDao.findById(id);
+        return crudTaskDao.findByTaskRest(id);
     }
 
     @Override
@@ -65,16 +65,17 @@ public class TaskServiceImpl implements TaskService {
         String nextTask = tasks[0];
         tasks = Arrays.copyOfRange(tasks, 1, tasks.length);
         taskSequence.setTaskSequence(tasks);
+        taskSequenceDao.delete(taskSequence.getId());
         taskSequenceDao.save(taskSequence);
         return nextTask;
     }
 
     @Override
-    public void addUserAnswer(String taskId, String answer) {
+    public void addUserAnswer(String taskRest, String answer) {
         TokenUser tokenUser = (TokenUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String userId = tokenUser.getId();
         UserAnswer userAnswer = new UserAnswer();
-        userAnswer.setTaskId(taskId);
+        userAnswer.setTaskRest(taskRest);
         userAnswer.setUserId(userId);
         userAnswer.setAnswer(answer);
         userAnswerDao.save(userAnswer);
@@ -92,7 +93,7 @@ public class TaskServiceImpl implements TaskService {
         }
         List<UserAnswer> userAnswers = userAnswerDao.findAllByUserId(userId);
         for (UserAnswer userAnswer : userAnswers) {
-            String taskId = userAnswer.getTaskId();
+            String taskId = userAnswer.getTaskRest();
             Task task = crudTaskDao.findTaskById(taskId);
             if (userAnswer.getAnswer().equals(task.getRightQuestion())) {
                 answerMap.computeIfPresent(task.getTaskType(), (k, v) -> v + 1);

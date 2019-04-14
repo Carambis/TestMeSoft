@@ -1,9 +1,10 @@
 package service_client.data;
 
 public class Task {
-    private Long id;
-    private Long lessonId;
-    private String name;
-    private String description;
-    private String mapPath;
+    private String id;
+    private String taskName;
+    private String taskRest;
+    private String taskType;
+    private String[] questions;
+    private String rightQuestion;
 }

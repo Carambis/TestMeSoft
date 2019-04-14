@@ -25,8 +25,8 @@ public class Controller {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(value = "/getTask")
-    public Task getTask(@RequestParam("id") String id){
-        return taskService.getTask(id);
+    public Task getTask(@RequestParam("taskRest") String taskRest){
+        return taskService.getTask(taskRest);
     }
 
     @PreAuthorize("isAuthenticated()")
@@ -37,9 +37,9 @@ public class Controller {
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping(value = "/saveAnswer")
-    public void saveAnswer(@RequestParam("taskId") String taskId,
+    public void saveAnswer(@RequestParam("taskRest") String taskRest,
                            @RequestParam("answer") String answer){
-        taskService.addUserAnswer(taskId, answer);
+        taskService.addUserAnswer(taskRest, answer);
     }
 
     @PreAuthorize("isAuthenticated()")

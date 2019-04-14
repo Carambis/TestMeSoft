@@ -8,7 +8,7 @@ public class UserAnswer {
     @Id
     private String id;
     private String userId;
-    private String taskId;
+    private String taskRest;
     private String answer;
 
     public UserAnswer() {
@@ -30,12 +30,12 @@ public class UserAnswer {
         this.userId = userId;
     }
 
-    public String getTaskId() {
-        return taskId;
+    public String getTaskRest() {
+        return taskRest;
     }
 
-    public void setTaskId(String taskId) {
-        this.taskId = taskId;
+    public void setTaskRest(String taskRest) {
+        this.taskRest = taskRest;
     }
 
     public String getAnswer() {

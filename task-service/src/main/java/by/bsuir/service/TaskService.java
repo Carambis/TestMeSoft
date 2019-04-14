@@ -4,13 +4,13 @@ import by.bsuir.entity.AnswerStatistic;
 import by.bsuir.entity.Task;
 
 public interface TaskService {
-    Task getTask(String id);
+    Task getTask(String taskRest);
 
     void startTest();
 
     String getNextTask();
 
-    void addUserAnswer(String taskId, String answer);
+    void addUserAnswer(String taskRest, String answer);
 
     AnswerStatistic checkUserAnswers();
 }
