@@ -37,11 +37,7 @@ public class UserService {
         return userRepository.save(userEntity);
     }
 
-    public String login(final String firstName, final String lastName, final String groupNumber) {
-        UserEntity userEntity = new UserEntity();
-        userEntity.setFirstName(firstName);
-        userEntity.setLastName(lastName);
-        userEntity.setGroupNumber(groupNumber);
+    public String login(UserEntity userEntity) {
         userEntity = add(userEntity);
         if (userEntity != null) {
             return getToken(userEntity);

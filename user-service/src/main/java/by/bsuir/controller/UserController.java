@@ -1,5 +1,6 @@
 package by.bsuir.controller;
 
+import by.bsuir.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,15 +25,18 @@ public class UserController {
 
     @Secured("ROLE_ANONYMOUS")
     @PostMapping(value = "/login")
-    public Result<String> login(@RequestParam(value = "firstName") final String firstName,
-                                @RequestParam(value = "lastName") final String lastName,
-                                @RequestParam(value = "groupNumber") final String groupNumber) {
-        return run(() -> userService.login(firstName, lastName, groupNumber));
+    public Result<String> login(@RequestBody UserEntity userEntity) {
+        return run(() -> userService.login(userEntity));
     }
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping(value = "/get/{id}")
     public Result<User> get(@PathVariable final String id) {
         return run(() -> userService.get(id));
+    }
+
+    @GetMapping(value = "/get")
+    public String get() {
+        return "sus";
     }
 }

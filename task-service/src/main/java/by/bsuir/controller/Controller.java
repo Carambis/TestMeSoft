@@ -29,27 +29,27 @@ public class Controller {
         return taskService.getTask(id);
     }
 
-//    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated()")
     @GetMapping(value = "/getNextTask")
     public String getNextTask(){
         return taskService.getNextTask();
     }
 
-//    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated()")
     @PostMapping(value = "/saveAnswer")
     public void saveAnswer(@RequestParam("taskId") String taskId,
                            @RequestParam("answer") String answer){
         taskService.addUserAnswer(taskId, answer);
     }
 
-//    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated()")
     @GetMapping(value = "/startTest")
     public void startTest(){
         taskService.startTest();
     }
 
-//    @PreAuthorize("isAuthenticated()")
-    @GetMapping(value = "getResult")
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping(value = "/getResult")
     public AnswerStatistic getResult(){
         return taskService.checkUserAnswers();
     }

@@ -9,6 +9,7 @@ public class Task {
     @Id
     private String id;
     private String taskName;
+    private String taskRest;
     private String taskType;
     private String[] questions;
     private String rightQuestion;
@@ -51,5 +52,13 @@ public class Task {
 
     public void setRightQuestion(String rightQuestion) {
         this.rightQuestion = rightQuestion;
+    }
+
+    public String getTaskRest() {
+        return taskRest;
+    }
+
+    public void setTaskRest(String taskRest) {
+        this.taskRest = taskRest;
     }
 }

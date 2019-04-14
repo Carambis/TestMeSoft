@@ -21,7 +21,7 @@ public class TokenService {
             throw new AuthenticationServiceException("Token corrupted");
         }
 
-        String id = claims.get(TokenData.ID.getValue(), Number.class).toString();
+        String id = claims.get(TokenData.ID.getValue(), String.class);
         String firstName = claims.get(TokenData.FIRSTNAME.getValue(), String.class);
         String lastName = claims.get(TokenData.LASTNAME.getValue(), String.class);
         String groupNumber = claims.get(TokenData.GROUPNUMBER.getValue(), String.class);
