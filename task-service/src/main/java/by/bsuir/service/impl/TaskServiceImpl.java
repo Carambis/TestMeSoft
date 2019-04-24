@@ -95,7 +95,7 @@ public class TaskServiceImpl implements TaskService {
         for (UserAnswer userAnswer : userAnswers) {
             String taskId = userAnswer.getTaskRest();
             Task task = crudTaskDao.findTaskById(taskId);
-            if (userAnswer.getAnswer().equals(task.getRightQuestion())) {
+            if (userAnswer.getAnswer().equals(task.getRightAnswer())) {
                 answerMap.computeIfPresent(task.getTaskType(), (k, v) -> v + 1);
             }
         }

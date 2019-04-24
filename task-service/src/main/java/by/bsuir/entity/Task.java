@@ -9,10 +9,11 @@ public class Task {
     @Id
     private String id;
     private String taskName;
+    private String header;
     private String taskRest;
     private String taskType;
-    private String[] questions;
-    private String rightQuestion;
+    private String[] answers;
+    private String rightAnswer;
 
     public String getId() {
         return id;
@@ -38,20 +39,20 @@ public class Task {
         this.taskType = taskType;
     }
 
-    public String[] getQuestions() {
-        return questions;
+    public String[] getAnswers() {
+        return answers;
     }
 
-    public void setQuestions(String[] questions) {
-        this.questions = questions;
+    public void setAnswers(String[] answers) {
+        this.answers = answers;
     }
 
-    public String getRightQuestion() {
-        return rightQuestion;
+    public String getRightAnswer() {
+        return rightAnswer;
     }
 
-    public void setRightQuestion(String rightQuestion) {
-        this.rightQuestion = rightQuestion;
+    public void setRightAnswer(String rightAnswer) {
+        this.rightAnswer = rightAnswer;
     }
 
     public String getTaskRest() {
@@ -60,5 +61,13 @@ public class Task {
 
     public void setTaskRest(String taskRest) {
         this.taskRest = taskRest;
+    }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
     }
 }

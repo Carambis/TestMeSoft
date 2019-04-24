@@ -1,9 +1,5 @@
 package by.bsuir.entity;
 
-import service_client.result.TaskResult;
-
-import java.time.Duration;
-
 public class AnswerStatistic {
     private TypeTaskResult[] results;
     private String recommendation;
