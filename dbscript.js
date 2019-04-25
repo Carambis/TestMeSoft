@@ -1,3 +1,5 @@
+db = db.getSiblingDB('testmesoftdb');
+
 db.createCollection("task");
 
 db.createCollection("users");
