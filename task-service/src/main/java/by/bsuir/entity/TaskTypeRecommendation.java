@@ -1,5 +1,8 @@
 package by.bsuir.entity;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "taskTypeRecommendation")
 public class TaskTypeRecommendation {
     private String taskType;
     private int minimumValue;

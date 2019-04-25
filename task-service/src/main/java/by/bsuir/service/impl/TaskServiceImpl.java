@@ -60,6 +60,7 @@ public class TaskServiceImpl implements TaskService {
         String[] tasks = taskSequence.getTaskSequence();
         if (tasks == null || tasks.length == 0) {
             taskSequence.setFinishDate(Date.from(Instant.now()));
+            taskSequenceDao.save(taskSequence);
             return "finishTest";
         }
         String nextTask = tasks[0];
@@ -94,7 +95,7 @@ public class TaskServiceImpl implements TaskService {
         List<UserAnswer> userAnswers = userAnswerDao.findAllByUserId(userId);
         for (UserAnswer userAnswer : userAnswers) {
             String taskId = userAnswer.getTaskRest();
-            Task task = crudTaskDao.findTaskById(taskId);
+            Task task = crudTaskDao.findTaskByTaskRest(taskId);
             if (userAnswer.getAnswer().equals(task.getRightAnswer())) {
                 answerMap.computeIfPresent(task.getTaskType(), (k, v) -> v + 1);
             }
@@ -105,14 +106,16 @@ public class TaskServiceImpl implements TaskService {
             typeTaskResult.setTypeTest(type);
             typeTaskResult.setAllCount(crudTaskDao.countByTaskType(type));
             typeTaskResult.setCountRight(answerMap.get(type));
+            taskResults.add(typeTaskResult);
         }
 
         answerStatistic.setResults(taskResults.toArray(new TypeTaskResult[0]));
-        answerStatistic.setRecommendation(getRecommendation(taskResults));
+        getRecommendation(taskResults);
 
         TaskSequence taskSequence = taskSequenceDao.getByUserId(userId);
 
         long duration = taskSequence.getFinishDate().getTime() - taskSequence.getStartDate().getTime();
+        duration = duration/1000;
         long hour = duration / 3600;
         long minute = (duration - hour * 3600) / 60;
         long second = duration - hour * 3600 - minute * 60;
@@ -120,17 +123,14 @@ public class TaskServiceImpl implements TaskService {
         return answerStatistic;
     }
 
-    private String getRecommendation(List<TypeTaskResult> taskResults) {
-        StringBuilder stringBuilder = new StringBuilder();
+    private void getRecommendation(List<TypeTaskResult> taskResults) {
         for (TypeTaskResult typeTaskResult : taskResults) {
             String type = typeTaskResult.getTypeTest();
             int percent = typeTaskResult.getCountRight() / typeTaskResult.getAllCount() * 100;
             TaskTypeRecommendation taskTypeRecommendation
                     = recommendationDao.findByMaximumValueGreaterThanAndMinimumValueLessThanEqualAndTaskType(percent, percent, type);
-            stringBuilder.append(taskTypeRecommendation.getRecommendation());
+            typeTaskResult.setRecommendation(taskTypeRecommendation.getRecommendation());
         }
-        return stringBuilder.toString();
-
     }
 
     private List<String> getShuffleTask(List<Task> taskList) {

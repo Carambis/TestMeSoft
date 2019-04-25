@@ -4,6 +4,8 @@ public class TypeTaskResult {
     private String typeTest;
     private int countRight;
     private int allCount;
+    private String recommendation;
+
 
     public String getTypeTest() {
         return typeTest;
@@ -27,6 +29,14 @@ public class TypeTaskResult {
 
     public void setAllCount(int allCount) {
         this.allCount = allCount;
+    }
+
+    public String getRecommendation() {
+        return recommendation;
+    }
+
+    public void setRecommendation(String recommendation) {
+        this.recommendation = recommendation;
     }
 
     public TypeTaskResult() {
