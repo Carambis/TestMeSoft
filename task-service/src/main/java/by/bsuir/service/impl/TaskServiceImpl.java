@@ -128,7 +128,7 @@ public class TaskServiceImpl implements TaskService {
             String type = typeTaskResult.getTypeTest();
             int percent = typeTaskResult.getCountRight() / typeTaskResult.getAllCount() * 100;
             TaskTypeRecommendation taskTypeRecommendation
-                    = recommendationDao.findByMaximumValueGreaterThanAndMinimumValueLessThanEqualAndTaskType(percent, percent, type);
+                    = recommendationDao.findByMaximumValueGreaterThanEqualAndMinimumValueLessThanEqualAndTaskType(percent, percent, type);
             typeTaskResult.setRecommendation(taskTypeRecommendation.getRecommendation());
         }
     }
