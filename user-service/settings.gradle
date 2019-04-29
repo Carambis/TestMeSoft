@@ -1,4 +1,5 @@
 rootProject.name = 'user-service'
 
 include ":service-client"
+project(':service-client').projectDir = file('../service-client')
 
