@@ -115,7 +115,7 @@ public class TaskServiceImpl implements TaskService {
         TaskSequence taskSequence = taskSequenceDao.getByUserId(userId);
 
         long duration = taskSequence.getFinishDate().getTime() - taskSequence.getStartDate().getTime();
-        duration = duration/1000;
+        duration = duration / 1000;
         long hour = duration / 3600;
         long minute = (duration - hour * 3600) / 60;
         long second = duration - hour * 3600 - minute * 60;
@@ -126,7 +126,7 @@ public class TaskServiceImpl implements TaskService {
     private void getRecommendation(List<TypeTaskResult> taskResults) {
         for (TypeTaskResult typeTaskResult : taskResults) {
             String type = typeTaskResult.getTypeTest();
-            int percent = typeTaskResult.getCountRight() / typeTaskResult.getAllCount() * 100;
+            int percent = typeTaskResult.getCountRight() * 100 / typeTaskResult.getAllCount();
             TaskTypeRecommendation taskTypeRecommendation
                     = recommendationDao.findByMaximumValueGreaterThanEqualAndMinimumValueLessThanEqualAndTaskType(percent, percent, type);
             typeTaskResult.setRecommendation(taskTypeRecommendation.getRecommendation());
