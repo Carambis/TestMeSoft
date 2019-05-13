@@ -6,6 +6,8 @@ import by.bsuir.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import service_client.client.UserClient;
+import service_client.data.User;
 import service_client.security.TokenUser;
 
 import java.time.Instant;
@@ -18,16 +20,18 @@ public class TaskServiceImpl implements TaskService {
     private final UserAnswerDao userAnswerDao;
     private final TaskDao taskDao;
     private final RecommendationDao recommendationDao;
+    private final AnswerStatisticDao answerStatisticDao;
 
     @Autowired
     public TaskServiceImpl(CrudTaskDao crudTaskDao, TaskSequenceDao taskSequenceDao,
                            UserAnswerDao userAnswerDao, TaskDao taskDao,
-                           RecommendationDao recommendationDao) {
+                           RecommendationDao recommendationDao, AnswerStatisticDao answerStatisticDao) {
         this.crudTaskDao = crudTaskDao;
         this.taskSequenceDao = taskSequenceDao;
         this.userAnswerDao = userAnswerDao;
         this.taskDao = taskDao;
         this.recommendationDao = recommendationDao;
+        this.answerStatisticDao = answerStatisticDao;
     }
 
     @Override
@@ -120,6 +124,14 @@ public class TaskServiceImpl implements TaskService {
         long minute = (duration - hour * 3600) / 60;
         long second = duration - hour * 3600 - minute * 60;
         answerStatistic.setDuration(hour + ":" + minute + ":" + second);
+        AnswerStatisticLog answerStatisticLog = new AnswerStatisticLog();
+        answerStatisticLog.setName(tokenUser.getFirstName());
+        answerStatisticLog.setLastName(tokenUser.getLastName());
+        answerStatisticLog.setGroupName(tokenUser.getGroupNumber());
+        answerStatisticLog.setDuration(hour + ":" + minute + ":" + second);
+        answerStatisticLog.setRightUI(answerMap.get("UI"));
+        answerStatisticLog.setRightFun(answerMap.get("F"));
+        answerStatisticDao.save(answerStatisticLog);
         return answerStatistic;
     }
 
