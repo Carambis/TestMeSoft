@@ -1,5 +1,1 @@
-rootProject.name = 'TestMeSoft'
-include 'user-service'
-include 'gataway-service'
-include 'task-service'
-include 'service-client'
+rootProject.name = 'task-service'

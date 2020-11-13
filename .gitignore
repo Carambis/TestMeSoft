@@ -101,7 +101,7 @@ modules.xml
 *.ipr
 
 ### Gradle ###
-.gradle
+../.gradle
 build/
 
 # Ignore Gradle GUI config

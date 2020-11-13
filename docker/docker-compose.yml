@@ -1,0 +1,21 @@
+version: '3.8'
+
+networks:
+  testmesoft:
+    name: testmesoft
+
+services:
+  mongo:
+    image: mongo
+    container_name: testmesoft-mongo
+    restart: always
+    hostname: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/dbscript.js:ro
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: thepassword
+    networks:
+      - testmesoft
