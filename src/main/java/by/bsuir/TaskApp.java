@@ -9,8 +9,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import service_client.security.TokenAuthenticationFilter;
-import service_client.security.TokenService;
+import by.bsuir.service_client.security.TokenAuthenticationFilter;
+import by.bsuir.service_client.security.TokenService;
 
 @SpringBootApplication
 @EnableWebSecurity
