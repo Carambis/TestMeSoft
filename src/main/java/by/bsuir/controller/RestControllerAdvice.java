@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import by.bsuir.service_client.result.Result;
 
 @ControllerAdvice
 public class RestControllerAdvice {
@@ -15,7 +14,7 @@ public class RestControllerAdvice {
     @ResponseBody
     final ResponseEntity<?> handle(final Exception exception) {
         exception.printStackTrace();
-        return new ResponseEntity<>(Result.error(getReason(exception)), HttpStatus.valueOf(DEFAULT_STATUS_CODE));
+        return new ResponseEntity<>(getReason(exception), HttpStatus.valueOf(DEFAULT_STATUS_CODE));
     }
 
     private static String getReason(final Throwable exception) {

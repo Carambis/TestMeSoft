@@ -1,9 +1,11 @@
 package by.bsuir.dao;
 
 import by.bsuir.entity.TaskSequence;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Mono;
 
-public interface TaskSequenceDao extends CrudRepository<TaskSequence, String> {
-    TaskSequence getByUserId(String userId);
+@Repository
+public interface TaskSequenceDao extends ReactiveMongoRepository<TaskSequence, String> {
+    Mono<TaskSequence> getByUserId(String userId);
 }

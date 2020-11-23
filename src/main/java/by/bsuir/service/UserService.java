@@ -1,7 +1,8 @@
 package by.bsuir.service;
 
 import by.bsuir.entity.UserEntity;
-import by.bsuir.repository.UserRepository;
+import by.bsuir.dao.UserRepository;
+import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 import by.bsuir.service_client.security.TokenData;
 import io.jsonwebtoken.JwtBuilder;

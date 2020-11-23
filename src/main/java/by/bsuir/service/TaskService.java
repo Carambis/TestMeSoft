@@ -1,12 +1,15 @@
 package by.bsuir.service;
 
 import by.bsuir.entity.AnswerStatistic;
-import by.bsuir.entity.Task;
+import by.bsuir.entity.BsuirTask;
+import by.bsuir.entity.TaskSequence;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface TaskService {
-    Task getTask(String taskRest);
+    Mono<BsuirTask> getTask(String taskRest);
 
-    void startTest();
+    Flux<TaskSequence> startTest();
 
     String getNextTask();
 

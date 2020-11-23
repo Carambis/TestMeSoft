@@ -32,6 +32,7 @@ public class UserController {
         return userService.get(id);
     }
 
+    @PreAuthorize("isAnonymous()")
     @GetMapping(value = "/test")
     public String login() {
         return "all ok";

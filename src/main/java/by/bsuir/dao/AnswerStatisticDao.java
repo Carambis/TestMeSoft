@@ -1,7 +1,9 @@
 package by.bsuir.dao;
 
 import by.bsuir.entity.AnswerStatisticLog;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.stereotype.Repository;
 
-public interface AnswerStatisticDao extends CrudRepository<AnswerStatisticLog, String> {
+@Repository
+public interface AnswerStatisticDao extends ReactiveMongoRepository<AnswerStatisticLog, String> {
 }

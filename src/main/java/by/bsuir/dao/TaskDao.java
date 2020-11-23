@@ -1,7 +1,7 @@
 package by.bsuir.dao;
 
-import java.util.List;
+import reactor.core.publisher.Flux;
 
 public interface TaskDao {
-    List<String> findAllTestType();
+    Flux<String> findAllTestType();
 }
